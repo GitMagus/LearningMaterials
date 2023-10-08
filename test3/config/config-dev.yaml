@@ -1,0 +1,6 @@
+NaocsConfig:
+  Server: 127.0.0.1
+  Port: 8848
+  NamespaceId: 055a8dfe-73b0-454e-9590-c22ecbb5099d
+  DataId: config
+  Group: dev

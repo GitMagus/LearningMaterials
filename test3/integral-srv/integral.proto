@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package integral;
+option go_package="./integral";
+
+message IRequest {
+  string user_id = 1;
+  int64 integral = 2;
+  int64 type = 3;
+}
+
+message IResponse {
+  bool result = 1;
+}
+
+service Integral {
+  // 随机获取积分
+  rpc SendIntegral(IRequest) returns(IResponse);
+}

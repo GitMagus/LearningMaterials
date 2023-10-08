@@ -1,0 +1,10 @@
+go 1.20
+
+use (
+	./bff
+	./common
+	./inits
+	./integral-srv
+	./job
+	./rocketmq
+)

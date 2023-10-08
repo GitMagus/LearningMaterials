@@ -1,0 +1,15 @@
+Name: bff-api
+Host: 0.0.0.0
+Port: 8888
+
+IntegralRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: integral.rpc
+
+Telemetry:
+  Name: bff-api
+  Endpoint: http://127.0.0.1:14268/api/traces
+  Batcher: jaeger
+  Sampler: 1.0

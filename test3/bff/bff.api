@@ -1,0 +1,16 @@
+syntax = "v1"
+
+type Request {
+	UserId int `form:"user_id"`
+}
+
+type Response {
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+}
+
+service bff-api {
+	// 根据用户id随机生成新积分
+	@handler UpdateUserIntegral
+	get /api/v1/update_user_integral(Request) returns(Response)
+}
