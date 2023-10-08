@@ -9,7 +9,7 @@ import (
 	"strings"
 	"xg/goods/rpc/model/mysql"
 )
-
+//类似goods替换需要的信息
 func SearchGoodsInfo(key, val, index string) ([]mysql.Goods, error) {
 	var data = map[string]interface{}{
 		"query": map[string]interface{}{
