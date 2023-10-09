@@ -1,0 +1,12 @@
+go 1.20
+
+use (
+	./api
+	./common/database
+	./common/elasticsearch
+	./common/pay-service
+	./common/rocketmq
+	./job
+	./rpc/inventory_srv
+	./rpc/order_srv
+)

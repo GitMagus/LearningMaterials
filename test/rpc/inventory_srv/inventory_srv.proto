@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package inventory_srv;
+option go_package="./inventory_srv";
+
+// 扣减库存
+message DRequest {
+  int64 gid = 1;
+  int64 count = 2;
+}
+
+message DResponse {
+  bool result = 1;
+}
+
+// 增加库存
+message AResquest{
+  int64 gid = 1;
+  int64 count = 2;
+}
+
+message AResponse {
+  bool result = 1;
+}
+service Inventory_srv {
+  // 扣减库存
+  rpc DescInventory(DRequest) returns(DResponse);
+  // 增加库存
+  rpc AddInventory(AResquest) returns(AResponse);
+}

@@ -1,0 +1,85 @@
+syntax = "v1"
+
+info (
+	title: // TODO: add title
+	desc: // TODO: add description
+	author: "jerorry"
+	email: "jerorry@263.net"
+)
+
+type (
+	Request {
+		Uid     int     `form:"uid"`
+		Gid     int     `form:"gid"`
+		Count   int     `form:"count"`
+		Fee     float64 `form:"fee"`
+		Subject string  `form:"subject"`
+	}
+
+	Response {
+		Code int       `json:"code"`
+		Msg  string    `json:"msg"`
+		Data OrderInfo `json:"data"`
+	}
+
+	OrderInfo {
+		OrderNo string `json:"order_no"`
+	}
+)
+
+// 回调
+type (
+	NRequest {
+	}
+	NResponse {
+		Code int    `json:"code"`
+		Msg  string `json:"msg"`
+	}
+)
+
+// 支付
+type (
+	PRequest {
+		OrderNo string `form:"order_no"`
+	}
+	PResponse {
+		Code   int    `json:"code"`
+		Msg    string `json:"msg"`
+		PayUrl string `json:"pay_url"`
+	}
+)
+
+type (
+	CDRequest {
+		Uid     int     `form:"uid"`
+		Gid     int     `form:"gid"`
+		Count   int     `form:"count"`
+		Fee     float64 `form:"fee"`
+		Subject string  `form:"subject"`
+	}
+	CDResponse {
+		Code int    `json:"code"`
+		Msg  string `json:"msg"`
+	}
+)
+
+service api {
+	// 下单
+	@handler CreateOrder
+	post /api/v1/create_order(Request) returns(Response)
+	
+	// 支付
+	@handler PayOrder
+	get /api/v1/pay_order(PRequest) returns(PResponse)
+	
+	// 回调
+	@handler SyncNotify
+	get /api/v1/notify(NRequest) returns(NResponse)
+	
+	@handler AsyncNotify
+	post /api/v1/notify(NRequest) returns(NResponse)
+	
+	// 下单+减库存
+	@handler CreataAndDesc
+	post /api/v1/create_and_desc_inventory(CDRequest) returns(CDResponse)
+}

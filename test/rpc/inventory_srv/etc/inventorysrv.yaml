@@ -1,0 +1,14 @@
+Name: inventorysrv.rpc
+ListenOn: 0.0.0.0:8082
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: inventorysrv.rpc
+
+
+Nacos:
+  Server: 127.0.0.1
+  Port: 8848
+  NameSpaceId: 708d3714-068b-420b-a0ae-58ed8dea84ae
+  DataId: domain
+  Group: dev
